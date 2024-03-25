@@ -1,6 +1,5 @@
 package com.webservice.basic.web.dto;
 
-import com.webservice.basic.web.dto.HelloResponseDto;
 import org.junit.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
