@@ -2,12 +2,16 @@ package com.webservice.basic.service;
 
 import com.webservice.basic.domain.posts.Posts;
 import com.webservice.basic.domain.posts.PostsRepository;
+import com.webservice.basic.web.dto.PostsListResponseDto;
 import com.webservice.basic.web.dto.PostsResponseDto;
 import com.webservice.basic.web.dto.PostsSaveRequestDto;
 import com.webservice.basic.web.dto.PostsUpdateResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
@@ -39,5 +43,10 @@ public class PostsService {
 
         return new PostsResponseDto(entity);
 
+    }
+
+    @Transactional(readOnly = true)
+    public List<PostsListResponseDto> findAllDesc(){
+        return postsRepository.findAllDesc().stream().map(PostsListResponseDto::new).collect(Collectors.toList());
     }
 }
